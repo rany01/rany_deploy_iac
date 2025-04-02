@@ -17,6 +17,7 @@ module "eks" {
 
   cluster_name              = "giropops-cluster"
   cluster_version           = "1.29"
+  cluster_version           = "1.29"
   subnet_ids                = module.vpc.private_subnets
   desired_size              = 2
   max_size                  = 3
@@ -40,6 +41,7 @@ module "app" {
     cert_manager_issuer                      = "letsencrypt-prod"
 }
 
+# Autenticação do cluster EKS
 # Autenticação do cluster EKS
 data "aws_eks_cluster_auth" "cluster" {
   name = module.eks.cluster_name
