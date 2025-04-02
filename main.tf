@@ -17,7 +17,6 @@ module "eks" {
 
   cluster_name              = "giropops-cluster"
   cluster_version           = "1.29"
-  cluster_version           = "1.29"
   subnet_ids                = module.vpc.private_subnets
   desired_size              = 2
   max_size                  = 3
