@@ -2,10 +2,10 @@
 # e o cluster de Kubernetes. O arquivo main.tf é o arquivo principal do projeto
 
 module "vpc" {
-  source = "../terraform-aws-vpc"
-  #source = "git@github.com:rany01/terraform-was-vpc.git"
+  #source = "../terraform-aws-vpc"
+  source = "git@github.com:rany01/terraform-was-vpc.git?ref=v1.0.0"
   
-  vpc_name         = "giropops-vpc"
+ # vpc_name         = "giropops-vpc"
   vpc_cidr         = "10.0.0.0/16"
   public_subnets   = ["10.0.1.0/24", "10.0.2.0/24"]
   private_subnets  = ["10.0.101.0/24", "10.0.102.0/24"]
@@ -16,7 +16,7 @@ module "eks" {
   source = "git@github.com:rany01/terraform-aws-eks.git"
 
   cluster_name              = "giropops-cluster"
-  cluster_version           = "1.24"
+  cluster_version           = "1.29"
   subnet_ids                = module.vpc.private_subnets
   desired_size              = 2
   max_size                  = 3
