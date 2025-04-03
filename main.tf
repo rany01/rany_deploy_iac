@@ -3,7 +3,7 @@
 
 module "vpc" {
   #source = "../terraform-aws-vpc"
-  source = "git@github.com:rany01/terraform-was-vpc.git?ref=v1.0.1"
+  source = "https://github.com/rany01/terraform-was-vpc.git?ref=v1.0.1"
 
   # vpc_name         = "giropops-vpc"
   vpc_cidr        = "10.0.0.0/16"
@@ -13,7 +13,7 @@ module "vpc" {
 }
 
 module "eks" {
-  source = "git@github.com:rany01/terraform-aws-eks.git?ref=v1.0.0"
+  source = "https://github.com/rany01/terraform-aws-eks.git?ref=v1.0.0"
 
   cluster_name    = "giropops-cluster"
   cluster_version = "1.29"
@@ -26,7 +26,7 @@ module "eks" {
 
 module "app" {
   #    source = "./terraform-kubernetes-app"
-  source = "git@github.com:rany01/terraform-kubernetes-app.git?ref=v1.0.0"
+  source = "https://github.com/rany01/terraform-kubernetes-app.git?ref=v1.0.0"
 
   cluster_endpoint                   = module.eks.cluster_endpoint
   cluster_certificate_authority_data = module.eks.cluster_certificate_authority_data
