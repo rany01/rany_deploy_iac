@@ -7,6 +7,7 @@ on:
     branches:
       - main
 
+      
 jobs:
     terraform:
         name: Terraform Validation & Security
