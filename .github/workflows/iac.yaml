@@ -34,6 +34,13 @@ jobs:
             - name: Run tfsec
               uses: aquasecurity/tfsec-action@v1.0.0
 
+            - name: Configurar chave SSH
+              run: |
+                mkdir -p ~/.ssh
+                echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
+                chmod 600 ~/.ssh/id_rsa
+                ssh-keyscan github.com >> ~/.ssh/known_hosts
+
             - name: Terraform Plan
               run: terraform plan -out=tfplan
               env:
